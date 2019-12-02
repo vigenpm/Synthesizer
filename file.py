@@ -9,7 +9,7 @@ from playsound import playsound
 class Widget(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('file2.ui', self)
+        uic.loadUi('file.ui', self)
         self.setWindowIcon(QIcon('logo.png'))
         self.rec = False
         self.melody = []
@@ -40,14 +40,14 @@ class Widget(QMainWindow):
     def saveMelody(self):
         if self.fn.text() != '':
             text = self.fn.text() + ".txt"
-            print(text)
-            f = open(text, 'w')
-            f.write(''.join(map(str, self.melody)))
-            f.close()
+            f2 = open(text, 'w')
+            f2.write(''.join(map(str, self.melody)))
+            f2.close()
 
     def openMelody(self):
         fname = QFileDialog.getOpenFileName(self, 'Выбрать мелодию',
                                             '', "(*.txt)")[0]
+        self.fn.setText(fname[fname.rindex('/') + 1:fname.index('.')])
         f = open(fname)
         lines = f.readlines()
         if len(lines) > 0:
@@ -93,35 +93,35 @@ class Widget(QMainWindow):
             self.mel.setText('')
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Z:
+        if event.key() == Qt.Key_1:
             playsound('do.mp3')
             if self.rec:
                 self.melody.append(1)
-        if event.key() == Qt.Key_X:
+        if event.key() == Qt.Key_2:
             playsound('re.mp3')
             if self.rec:
                 self.melody.append(2)
-        if event.key() == Qt.Key_C:
+        if event.key() == Qt.Key_3:
             playsound('mi.mp3')
             if self.rec:
                 self.melody.append(3)
-        if event.key() == Qt.Key_V:
+        if event.key() == Qt.Key_4:
             playsound('fa.mp3')
             if self.rec:
                 self.melody.append(4)
-        if event.key() == Qt.Key_B:
+        if event.key() == Qt.Key_5:
             playsound('sol.mp3')
             if self.rec:
                 self.melody.append(5)
-        if event.key() == Qt.Key_N:
+        if event.key() == Qt.Key_6:
             playsound('la.mp3')
             if self.rec:
                 self.melody.append(6)
-        if event.key() == Qt.Key_M:
+        if event.key() == Qt.Key_7:
             playsound('si.mp3')
             if self.rec:
                 self.melody.append(7)
-        if event.key() == Qt.Key_1:
+        if event.key() == Qt.Key_0:
             playsound('pause.mp3')
             if self.rec:
                 self.melody.append(0)
