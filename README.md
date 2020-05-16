@@ -3,4 +3,4 @@
 Сайт проекта: <https://vikonter.ru/?page=synthesizer>
 
 
-_© Vigenpm Web Production, 2019_
+_© Vigenpm Production, 2019_
